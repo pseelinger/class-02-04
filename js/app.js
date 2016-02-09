@@ -450,6 +450,10 @@ app.controller('bBall', function(){
   this.name = "";
   for(i in this.data){
     this.data[i].playerName = this.data[i].first + " " + this.data[i].last;
+    this.data[i].fgPct = ((this.data[i].fieldGoals / this.data[i].fieldGoalsAttempted)*100).toFixed(2);
+    if(isNaN(this.data[i].fgPct)){
+      this.data[i].fgPct = 0;
+    }
   };
 
 });

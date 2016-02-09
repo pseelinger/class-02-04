@@ -12,16 +12,18 @@
       <button ng-click="sortType = 'last'; sortReverse = false">Reset Table</button>
   <table class="table-striped table">
 <tr>
-<th ng-click="sortType ='last'; sortReverse = !sortReverse"><a href=#>Player</a></td>
-<th ng-click="sortType ='fieldGoals'; sortReverse = !sortReverse"><a href=#>FG</a></td>
-<th ng-click="sortType ='fieldGoalsAttempted'; sortReverse = !sortReverse"><a href=#>FGA</a></td>
-<th ng-click ="sortType ='points'; sortReverse = !sortReverse"><a href=#>Points</a></td>
-<th ng-click="sortType ='fouls'; sortReverse = !sortReverse"><a href=#>Fouls</a></td>
+<th ng-click="sortType ='last'; sortReverse = !sortReverse"><a href=#>Player</a></th>
+<th ng-click="sortType ='fieldGoals'; sortReverse = !sortReverse"><a href=#>FG</a></th>
+<th ng-click="sortType ='fieldGoalsAttempted'; sortReverse = !sortReverse"><a href=#>FGA</a></th>
+<th ng-click="sortType = 'fgPct'; sortReverse = !sortReverse"><a href=#>FG%</a></th>
+<th ng-click ="sortType ='points'; sortReverse = !sortReverse"><a href=#>Points</a></th>
+<th ng-click="sortType ='fouls'; sortReverse = !sortReverse"><a href=#>Fouls</a></th>
 </tr>
 <tr ng-repeat ="player in bBallCtrl.data | orderBy: 'last' | orderBy:sortType:sortReverse | filter: {playerName: name}">
 <td>{{player.playerName}} </br> <img src={{player.images[0]}}></td>
 <td>{{player.fieldGoals}}</td>
 <td>{{player.fieldGoalsAttempted}}</td>
+<td>{{player.fgPct}}</td>
 <td>{{player.points}}</td>
 <td>{{player.fouls}}</td>
 </tr>
