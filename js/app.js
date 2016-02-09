@@ -441,7 +441,6 @@ var data = [
         points: 0
     }
 ];
-
 var app = angular.module('basketballApp', []);
 app.controller('bBall', function(){
   this.data = data;
@@ -449,6 +448,8 @@ app.controller('bBall', function(){
   this.sortReverse = false;
   this.searchTable = "";
   this.name = "";
-
+  for(i in this.data){
+    this.data[i].playerName = this.data[i].first + " " + this.data[i].last;
+  };
 
 });
