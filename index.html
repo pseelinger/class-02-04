@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="basketballApp">
+<head><title>Basketball App</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <link rel='stylesheet' type="text/css" href="css/bootstrap.min.css" />
+</head>
+<body>
+  <div class='container' ng-controller ="bBall as bBallCtrl">
+    <div class="row">
+      <p>Search:<input type="text" name="playerName" ng-model='name'></input></p>
+      <button ng-click="sortType = 'last'; sortReverse = false">Reset Table</button>
+  <table class="table-striped table">
+<tr>
+<th ng-click="sortType ='last'; sortReverse = !sortReverse">Player</td>
+<th ng-click="sortType ='fieldGoals'; sortReverse = !sortReverse">FG</td>
+<th ng-click="sortType ='fieldGoalsAttempted'; sortReverse = !sortReverse">FGA</td>
+<th ng-click ="sortType ='points'; sortReverse = !sortReverse">Points</td>
+<th ng-click="sortType ='fouls'; sortReverse = !sortReverse">Fouls</td>
+</tr>
+<tr ng-repeat ="player in bBallCtrl.data | orderBy:sortType:sortReverse | filter: {last: name}">
+<td>{{player.first}} {{player.last}} </br> <img src={{player.images[0]}}></td>
+<td>{{player.fieldGoals}}</td>
+<td>{{player.fieldGoalsAttempted}}</td>
+<td>{{player.points}}</td>
+<td>{{player.fouls}}</td>
+</tr>
+  </table>
+</div>
+</div>
+</body>
+</html>
